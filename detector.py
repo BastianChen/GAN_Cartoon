@@ -16,7 +16,7 @@ class Detector:
         self.g_net.eval()
 
     def detect(self):
-        epoch_num = 10
+        epoch_num = 1
         batch_size = 100
         random_num = 128
         for i in range(epoch_num):
@@ -25,7 +25,7 @@ class Detector:
                 fake_img = self.g_net(z)
                 fake_out = self.d_net(fake_img)
 
-            save_image(fake_img, "{}/{}-{}-real_img.jpg".format(self.save_image_path, "detector", i), 10,
+            save_image(fake_img, "{}/{}-{}-fake_img.jpg".format(self.save_image_path, "detector", 10), 10,
                        normalize=True, scale_each=True)
             print("fake_out:{}".format(fake_out.detach().mean()))
 
